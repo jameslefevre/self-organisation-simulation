@@ -1,0 +1,63 @@
+This code is designed to simulate random motion and aggregation in a culture of dissagregated cells
+It allows live viewing, as well as capture of images and numerical data.
+The user interface is limited, and the model specification and many options require simple code editing.
+
+To run:
+- install Processing 2 language and environment (requires Java)
+- copy this folder into the Processing sketchbook folder (see location from Processing menu File-> Preferences, it is shown at top)
+- install Processing library "peasycam" (place into Library folder within sketchbook
+- open the sketch (self_organisation_sim) from Processing menu or by double clicking file, depending on operating system.
+- make any desired modification to model or display settings by modifying code (see below)
+- run and quit using buttons at top left
+
+Live controls:
+
+  view using mouse controls provided by peasycam library:
+     left button drag to rotate
+     scroll or right button drag to zoom
+     centre button drag to pan
+     
+  Key commands (see UI tab):
+     p - pause/unpause simulation (allows continued viewing and saving screenshots) 
+     d - stop/restart refreshing the screen without pasuing simulation (may allow better performance)
+     c - toggles display of cells (adhesion bonds remain visible)
+     1 - toggle display of cell type 1 (non-adhesive)
+     2 - toggle display of cell type 2 (UE, adhesive)
+     spacebar - prints some summary info about current model state to the console
+     s - take screenshot of current view
+     S - start/stop recording. While recording, a screenshot is taken every time step (or other interval defined by 
+         parameter runCtrl.frameSampling) and saved to folder "movieFiles
+     a - saves numerical summary of current model state (not recommended - enable auto-saving in code for more systematic analysis).
+     l - moves camera to predefined location (hard-coded parameter displayCtrl.cameraPosOrientForReset)
+     o - toggles display of octree used for proximity detection (technical interest only)
+
+Code modification:
+
+    The simulation may be customised by editing code in the first tab (sel_organisation_sim), in the section labelled "SET UP SIMULATION" 
+    in the setup() method. 
+    Changes should involve modifications to the objects m (model specification, see tab "modelSpec"), cells (initial cell specification),
+    or displayCtrl / runCtrl (other parameters, see UI tab).
+ 
+  Model specification:
+    The model specification is initialised by the command "m = cellAggregation3d(x,y,z)", where x,y,z specifies the region to which 
+    the simulated cells are restricted. The parameters in this object may be reset to change the way the simulation operates (see ModelSpec tab).
+    The initial cell collection is created by the command "cells = randomCellPositions(m.limit, new int[]{0,a,b});"
+    where a and b are the number of type 1 (non-adhesive) and type 2 (UE, adhesive) cells respectively.
+
+  Saving numerical data:
+    Enable auto-saving of numerical data by setting runCtrl.recordCellLevelDataTimeSeries = false; 
+    Control save times using runCtrl.num_frames_per_timeseries_save and runCtrl.additionalSaveTimes (example in code).
+    Data is saved to data/timeSeriesDataCell in tsv format; for each time step that a save is done, data is appended to the existing file 
+    (identified by time step). Move data file when done or it will be overwritten by the next save.
+
+  Make movie:
+    - reset runCtrl.frameSampling if you don't wish to save every iteration
+    - set runCtrl.paused = true so that you can start recording from time step 1
+    - Run code, select camera view to record from
+    - Press S (capital) then p
+    - watch screenshots appear in movieFiles folder, and stop simulation when you have enough
+    - Use Tools -> Moviemaker in Processing menu, or other movie making tool. 
+
+
+
+

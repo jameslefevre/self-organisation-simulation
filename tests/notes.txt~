@@ -1,0 +1,49 @@
+Firstly, want to test equivalency of three cell-repulsion algorithms: 
+naive pairwise, BH symetrical and BH asymetrical. We do this by counting interacting pairs (I think this is the hard part). To do this, we run all three each frame, save the 3 pair counts into temp testing variables, then check they are equal at the end of each frame.
+Implemented in testCode/testRepulsionAlgorithms(), checks out
+
+Secondly, quick speed test: grow for a while, stop proliferation, cycle through methods (including none) 3 times, record frame rates, unpause and repeat until bored
+
+Removed testRepulsionAlgorithms() from main loop. 
+Using BH original with gdnfBarnesHutTheta = 0.5
+
+
+cells: 528
+none: 20.04
+naive: 20.0
+symetric: 19.96
+asymetric: 20.0
+
+cells: 1244
+none: 18.59, 19.76
+naive: 15.80, 15.31
+symetric: 19.42, 19.49
+asymetric: 19.84, 17.51
+
+[turned cell rendering off]
+
+cells: 3590
+none: 16.34, 15.50, 16.34, 14.31
+naive: 5.43, 5.87, 5.96, 5.90
+symetric: 14.66, 14.95, 15.36, 15.75
+asymetric: 12.72, 13.66, 13.42, 13.72
+
+cells: 8154
+none: 5.57, 5.75, 5.87, 5.71, 5.68
+naive: 1.58, 1.31, 2.13, 1.35, 1.32
+symetric: 5.28, 5.31, 5.35, 5.39, 5.39
+asymetric: 4.77, 4.66, 4.67, 4.64, 4.82
+
+maybe drawing the wire frame is dominant: compare symetric to none with drawing off:
+
+cells: 8154
+none: 
+symetric: 
+
+So octree methods are equivalent to simple pairwise comparison in pairs found, 
+so pretty confident about correctness
+
+Symetric pair repulsion method has only a modest cost in relation to whole algorithm, while asymetric method is much more expensive, while still being far better than naive pairwise comparison.
+
+So go with symetric pairwise method
+
