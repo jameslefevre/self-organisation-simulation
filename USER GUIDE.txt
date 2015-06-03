@@ -1,4 +1,4 @@
-This code is designed to simulate random motion and aggregation in a culture of dissagregated cells
+This code is designed to simulate random motion and aggregation in a culture of dissagregated cells.
 It allows live viewing, as well as capture of images and numerical data.
 The user interface is limited, and the model specification and many options require simple code editing.
 

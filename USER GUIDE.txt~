@@ -45,6 +45,7 @@ Code modification:
     where a and b are the number of type 1 (non-adhesive) and type 2 (UE, adhesive) cells respectively.
 
   Saving numerical data:
+    See example/guide code in setup section.
     Enable auto-saving of numerical data by setting runCtrl.recordCellLevelDataTimeSeries = false; 
     Control save times using runCtrl.num_frames_per_timeseries_save and runCtrl.additionalSaveTimes (example in code).
     Data is saved to data/timeSeriesDataCell in tsv format; for each time step that a save is done, data is appended to the existing file 
@@ -57,7 +58,5 @@ Code modification:
     - Press S (capital) then p
     - watch screenshots appear in movieFiles folder, and stop simulation when you have enough
     - Use Tools -> Moviemaker in Processing menu, or other movie making tool. 
-
-
 
 
