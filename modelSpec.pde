@@ -38,7 +38,7 @@ ModelSpecification cellAggregation3d(int xDim, int yDim, int zDim){
   m.adhesionSpringLength = 8; 
   m.adhesionSpringForce = 0.02; // 0.2 is unstable (fun)
   m.breakAdhesionDist = 12;
-  m.adhesionFormationProbability = 0.005;
+  m.adhesionFormationProbability = 0.01;
 
   return(m);
 }

@@ -1,7 +1,3 @@
-// this contains 3 redundent implementations of near-cell detection and interaction (repulsion and adhesion)
-// the simple pairwise version is for checking octree methods
-// use nearCellInteractionOctreeNodePair()
-
 // method used once we have identified a nearby pair
 
 void nearPairInteration(Cell c1, Cell c2, float d){

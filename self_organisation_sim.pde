@@ -31,20 +31,22 @@ void setup()
   
   // SET UP SIMULATION ///////////////////////////////////////////////////////////////////////////////////
 
-  m = cellAggregation3d(50,200,200); // toy example for display
-  cells = randomCellPositions(m.limit, new int[]{0,500,500});
+  //m = cellAggregation3d(50,200,200); // toy example for display
+  //cells = randomCellPositions(m.limit, new int[]{0,500,500});
   
 
-  //m = cellAggregation3d(680,250,200); 
-  //cells = randomCellPositions(m.limit, new int[]{0,0,6800}); // last 2 numbers type 1 cells (cap) and type 2 cells (tip) ; 4420 ; 6800 ; 8500 
+  m = cellAggregation3d(680,250,200); 
+  m.adhesionFormationProbability = 0.0005;
+  cells = randomCellPositions(m.limit, new int[]{0,0,6800}); // last 2 numbers type 1 cells (cap) and type 2 cells (tip) ; 4420 ; 6800 ; 8500 
 
-  displayCtrl.colourByCluster = false; // use random clour map to distinguish clusters rather than just color by cell type
+  displayCtrl.colourByCluster = true; // use random clour map to distinguish clusters rather than just color by cell type
   
   // this is where we specify auto-saving of numerical data
-  runCtrl.recordCellLevelDataTimeSeries = false; // change to true to enable auto-saving
+  runCtrl.recordCellLevelDataTimeSeries = true; // change to true to enable auto-saving
   runCtrl.num_frames_per_timeseries_save = 1000000; // use to save at fixed intervals, or set very high and use specified times below instead
-  runCtrl.additionalSaveTimes = new ArrayList<Integer>(Arrays.asList(450, 1800, 2700, 5400, 10800, 720, 2880, 4320, 8640, 17280)); // comment out this line if you want to use regular interval method
-  
+  // runCtrl.additionalSaveTimes = new ArrayList<Integer>(Arrays.asList(450, 1800, 2700, 5400, 10800, 720, 2880, 4320, 8640, 17280)); // comment out this line if you want to use regular interval method
+  // runCtrl.additionalSaveTimes = new ArrayList<Integer>(Arrays.asList(450, 1800, 2700, 5400, 10800));
+  runCtrl.additionalSaveTimes = new ArrayList<Integer>(Arrays.asList(900,  3600,  5400, 10800, 21600));
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   println("MODEL INITIALSED - START SETUP");
