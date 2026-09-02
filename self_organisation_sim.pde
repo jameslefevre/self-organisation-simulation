@@ -22,7 +22,8 @@ Octree octree;
 
 void setup()
 {
-  println("INITIALISE MODEL");
+  size(100,100,OPENGL);
+  println("INITIALISE MODEL"); //P3D  OPENGL
   
   displayCtrl = new DisplayCtrl(); // most values can be changed while running, see "UI"
   runCtrl = new RunCtrl(); // most values can be changed while running, see "UI"
@@ -50,7 +51,7 @@ void setup()
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   println("MODEL INITIALSED - START SETUP");
-  size( displayCtrl.screensize[0], displayCtrl.screensize[1], OPENGL); //P3D  OPENGL
+  windowResize( displayCtrl.screensize[0], displayCtrl.screensize[1]); 
   frameRate(runCtrl.targetFrameRate);
   
   
@@ -89,4 +90,3 @@ void draw()
     runModelIteration();
   }
 }
-
