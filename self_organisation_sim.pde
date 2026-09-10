@@ -32,15 +32,15 @@ void setup()
   
   // SET UP SIMULATION ///////////////////////////////////////////////////////////////////////////////////
 
-  //m = cellAggregation3d(50,200,200); // toy example for display
-  //cells = randomCellPositions(m.limit, new int[]{0,500,500});
-  
+  m = cellAggregation3d(200,200,50); // toy example for display
+  cells = randomCellPositions(m.limit, new int[]{0,500,500});
+  displayCtrl.colourByCluster = false; 
 
-  m = cellAggregation3d(680,250,200); 
-  m.adhesionFormationProbability = 0.0005;
-  cells = randomCellPositions(m.limit, new int[]{0,0,6800}); // last 2 numbers type 1 cells (cap) and type 2 cells (tip) ; 4420 ; 6800 ; 8500 
+  //m = cellAggregation3d(680,250,200); 
+  //m.adhesionFormationProbability = 0.0005;
+  //cells = randomCellPositions(m.limit, new int[]{0,0,6800}); // last 2 numbers type 1 cells (cap) and type 2 cells (tip) ; 4420 ; 6800 ; 8500 
 
-  displayCtrl.colourByCluster = true; // use random clour map to distinguish clusters rather than just color by cell type
+  //displayCtrl.colourByCluster = true; // use random clour map to distinguish clusters rather than just color by cell type
   
   // this is where we specify auto-saving of numerical data
   runCtrl.recordCellLevelDataTimeSeries = true; // change to true to enable auto-saving
@@ -52,6 +52,8 @@ void setup()
 
   println("MODEL INITIALSED - START SETUP");
   windowResize( displayCtrl.screensize[0], displayCtrl.screensize[1]); 
+  cam.setViewport(0, 0, displayCtrl.screensize[0], displayCtrl.screensize[1]);
+  
   frameRate(runCtrl.targetFrameRate);
   
   
@@ -66,6 +68,7 @@ void setup()
   if (runCtrl.recordCellLevelDataTimeSeries) {
     initialiseCellDataFile(); 
   }
+  cam.setActive(true);
   println("SETUP COMPLETE");  
 }
   
