@@ -39,7 +39,7 @@ class RunCtrl{
   int num_frames_per_timeseries_save = 1000; 
   ArrayList<Integer> additionalSaveTimes = new ArrayList<Integer>();
   boolean recording = false;
-  int frameSampling = 1; // 1 means save screenshot every time step while recording
+  int frameSampling = 1; // 1 means save screenshot every time step while recording // demo used 20
   // note that pressing 's' gives instant screen shot
   
   // monitoring and debugging ///////////////////////////////////////////////////////////////////////////////////////////
